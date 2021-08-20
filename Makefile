@@ -16,6 +16,14 @@ build-litmus:
 	@echo "----------------"
 	@go test tests/install-litmus_test.go -v -count=1
 
+.PHONY: build-litmus-ns-mode
+build-litmus-ns-mode:
+
+	@echo "----------------------------------"
+	@echo "Building Litmus In Namespace Mode "
+	@echo "----------------------------------"
+	@go test tests/install-litmus-ns-mode_test.go -v -count=1	
+
 .PHONY: app-deploy
 app-deploy:
 

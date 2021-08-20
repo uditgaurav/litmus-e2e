@@ -9,17 +9,16 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
-	"k8s.io/klog"
 )
 
-func TestInstallLitmus(t *testing.T) {
+func TestInstallLitmusInNamespaceMode(t *testing.T) {
 
 	RegisterFailHandler(Fail)
 	RunSpecs(t, "BDD test")
 }
 
 //BDD Tests to Install Litmus
-var _ = Describe("BDD of Litmus installation", func() {
+var _ = Describe("BDD of Litmus installation in namespace mode", func() {
 
 	// BDD TEST CASE 1
 	Context("Check for the Litmus components", func() {
@@ -37,12 +36,11 @@ var _ = Describe("BDD of Litmus installation", func() {
 			//Fetching all the default ENV
 			//Note: please don't provide custom experiment name here
 			By("[PreChaos]: Fetching all default ENVs")
-			klog.Infof("[PreReq]: Getting the ENVs for the %v test", testsDetails.ExperimentName)
 			environment.GetENV(&testsDetails, "install-litmus", "")
 
 			//Installing Litmus
 			By("Installing Litmus")
-			err = pkg.InstallLitmus(&testsDetails, "cluster")
+			err = pkg.InstallLitmus(&testsDetails, "namespace")
 			Expect(err).To(BeNil(), "Litmus installation failed, due to {%v}", err)
 
 			// Checking the chaos operator running status
@@ -51,5 +49,4 @@ var _ = Describe("BDD of Litmus installation", func() {
 			Expect(err).To(BeNil(), "Operator status check failed, due to {%v}", err)
 		})
 	})
-
 })

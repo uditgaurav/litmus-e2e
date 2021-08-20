@@ -385,31 +385,95 @@ func InstallGoChaosEngine(testsDetails *types.TestDetails, chaosEngine *v1alpha1
 }
 
 //InstallLitmus installs the latest version of litmus
-func InstallLitmus(testsDetails *types.TestDetails) error {
+func InstallLitmus(testsDetails *types.TestDetails, mode string) error {
 
-	log.Info("Installing Litmus ...")
-	if err := DownloadFile("install-litmus.yaml", testsDetails.InstallLitmus); err != nil {
+	switch mode {
+	case "cluster":
+		return setupLitmusInClusterMode(testsDetails)
+
+	case "namespace":
+		return setupLitmusInNamespaceMode(testsDetails)
+
+	}
+	return errors.Errorf("invalid mode of installtion")
+}
+
+//setupLitmusInClusterMode will install the litmus in cluster mode
+func setupLitmusInClusterMode(testsDetails *types.TestDetails) error {
+
+	log.Info("Installing Litmus in Cluster mode...")
+	if err := DownloadFile("/tmp/install-litmus.yaml", testsDetails.InstallLitmus); err != nil {
 		return errors.Errorf("Fail to fetch litmus operator file, due to %v", err)
 	}
+
+	if err = configureOperator(testsDetails, "/tmp/install-litmus.yaml", "ci", "litmus"); err != nil {
+		return err
+	}
+
+	log.Info("Litmus installed successfully !!!")
+	return nil
+
+}
+
+//setupLitmusInClusterMode will install the litmus in namespace mode
+func setupLitmusInNamespaceMode(testsDetails *types.TestDetails) error {
+
+	log.Info("Installing Litmus in Namespace mode...")
+	//Creating crds
+	command := []string{"apply", "-f", "https://raw.githubusercontent.com/litmuschaos/litmus/master/docs/litmus-namespaced-scope/litmus-namespaced-crds.yaml"}
+	err := Kubectl(command...)
+	if err != nil {
+		return errors.Errorf("fail to apply create crds, err: %v", err)
+	}
+	if err := DownloadFile("/tmp/install-litmus-operator.yaml", "https://raw.githubusercontent.com/litmuschaos/litmus/master/docs/litmus-namespaced-scope/litmus-namespaced-operator.yaml"); err != nil {
+		return errors.Errorf("Fail to fetch litmus operator file, due to %v", err)
+	}
+	if err = configureOperator(testsDetails, "/tmp/install-litmus-operator.yaml", "1.13.8", "default"); err != nil {
+		log.Errorf("fail to update the operator manifest,err: %v", err)
+	}
+	if err := DownloadFile("/tmp/install-litmus-sa.yaml", "https://raw.githubusercontent.com/litmuschaos/litmus/master/docs/litmus-namespaced-scope/litmus-ns-experiment-rbac.yaml"); err != nil {
+		return errors.Errorf("Fail to fetch litmus sa file, due to %v", err)
+	}
+	//Modify Namespace field of the RBAC
+	err = EditFile("/tmp/install-litmus-sa.yaml", "namespace: default", "namespace: "+testsDetails.ChaosNamespace)
+	if err != nil {
+		return errors.Errorf("Fail to change the namespace in sa, due to %v", err)
+	}
+	//Creating engine
+	command = []string{"apply", "-f", "/tmp/install-litmus-sa.yaml"}
+	err = Kubectl(command...)
+	if err != nil {
+		return errors.Errorf("fail to create namespaced sa role for experiments, err: %v", err)
+	}
+	log.Info("Litmus installed successfully !!!")
+	return nil
+}
+
+//configureOperator will setup and create operator
+func configureOperator(testsDetails *types.TestDetails, filename, imgTag, operatorNS string) error {
+
 	log.Info("Updating ChaosOperator Image ...")
-	if err := EditFile("install-litmus.yaml", "image: litmuschaos/chaos-operator:latest", "image: "+testsDetails.OperatorImage); err != nil {
+	if err := EditFile(filename, "image: litmuschaos/chaos-operator:"+imgTag, "image: "+testsDetails.OperatorImage); err != nil {
 		return errors.Errorf("Unable to update operator image, due to %v", err)
 
 	}
-	if err = EditKeyValue("install-litmus.yaml", "  - chaos-operator", "imagePullPolicy: Always", "imagePullPolicy: "+testsDetails.ImagePullPolicy); err != nil {
+	if err = EditKeyValue(filename, "  - chaos-operator", "imagePullPolicy: Always", "imagePullPolicy: "+testsDetails.ImagePullPolicy); err != nil {
 		return errors.Errorf("Unable to update image pull policy, due to %v", err)
 	}
+	err = EditFile(filename, "namespace: "+operatorNS, "namespace: "+testsDetails.ChaosNamespace)
+	if err != nil {
+		return errors.Errorf("Fail to change the namespace in operator sa, due to %v", err)
+	}
 	log.Info("Updating Chaos Runner Image ...")
-	if err := EditKeyValue("install-litmus.yaml", "CHAOS_RUNNER_IMAGE", "value: \"litmuschaos/chaos-runner:latest\"", "value: '"+testsDetails.RunnerImage+"'"); err != nil {
+	if err := EditKeyValue(filename, "CHAOS_RUNNER_IMAGE", "value: \"litmuschaos/chaos-runner:"+imgTag+"\"", "value: '"+testsDetails.RunnerImage+"'"); err != nil {
 		return errors.Errorf("Unable to update runner image, due to %v", err)
 	}
 	//Creating engine
-	command := []string{"apply", "-f", "install-litmus.yaml"}
+	command := []string{"apply", "-f", filename, "-n", testsDetails.ChaosNamespace}
 	err := Kubectl(command...)
 	if err != nil {
 		return errors.Errorf("fail to apply litmus installation file, err: %v", err)
 	}
-	log.Info("Litmus installed successfully !!!")
 
 	return nil
 }
