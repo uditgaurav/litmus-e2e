@@ -7,7 +7,7 @@ filename: index
 
 # **LitmusChaos E2E**
 
-LitmusChaos is a toolset to do [cloud-native chaos engineering](https://dev.to/umamukkara/chaos-engineering-for-cloud-native-systems-2fjn). It takes a cloud-native approach to create, manage and monitor chaos. Chaos is orchestrated using the Kubernetes Custom Resource Definitions (CRDs) which are called ChaosEngine, ChaosExperiment and ChaosResult. For a higher performance we need these components to work accurately according to our hypothesis between every upgrade and updates which brings the need of <b>LitmusChaos E2E</b>.<br>
+
 The Litmus E2E is broadly divided in three categories Generic, OpenEBS. LitmusPortal managed by respective branch in litmus-e2e repository.
 
 ## **Branch Details**
