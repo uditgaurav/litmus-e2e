@@ -1,6 +1,6 @@
-import { h, icon, badge, statusLabel } from '../dom.js?v=1395207684';
-import { buildInfo, buildOf, describeId, shortName, fmtAgo, fmtDate, versionOf, groupOfId } from '../data.js?v=1395207684';
-import { magnetic } from '../motion.js?v=1395207684';
+import { h, icon, badge, statusLabel } from '../dom.js?v=5ff4a9b2df';
+import { buildInfo, buildOf, describeId, shortName, fmtAgo, fmtDate, versionOf, groupOfId } from '../data.js?v=5ff4a9b2df';
+import { magnetic } from '../motion.js?v=5ff4a9b2df';
 
 export function skeleton() {
   return h('div', { class: 'stack', 'aria-busy': 'true', 'aria-label': 'Loading the results' },
