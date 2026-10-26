@@ -1,8 +1,8 @@
-import { h, icon, badge } from '../dom.js';
-import * as D from '../data.js';
-import { ring, trendChart, srTable, tone } from '../charts.js';
-import { countUp, tilt } from '../motion.js';
-import { pageHead, buildDot, runMeta, idLink, expLink, testTitle } from './common.js';
+import { h, icon, badge } from '../dom.js?v=1395207684';
+import * as D from '../data.js?v=1395207684';
+import { ring, trendChart, srTable, tone } from '../charts.js?v=1395207684';
+import { countUp, tilt } from '../motion.js?v=1395207684';
+import { pageHead, buildDot, runMeta, idLink, expLink, testTitle } from './common.js?v=1395207684';
 
 function stage(b, ctx) {
   const info = D.buildInfo(b.key);

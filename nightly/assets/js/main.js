@@ -1,12 +1,12 @@
-import { icon, announce, hideTip } from './dom.js';
-import * as D from './data.js';
-import { reveal, swap, installSpotlight, magnetic } from './motion.js';
-import { skeleton } from './views/common.js';
-import { overview } from './views/overview.js';
+import { icon, announce, hideTip } from './dom.js?v=1395207684';
+import * as D from './data.js?v=1395207684';
+import { reveal, swap, installSpotlight, magnetic } from './motion.js?v=1395207684';
+import { skeleton } from './views/common.js?v=1395207684';
+import { overview } from './views/overview.js?v=1395207684';
 
 // the overview is loaded with the page, the other views and the overlays when they are first needed
-const ROUTES = { overview: async () => overview, readiness: async () => (await import('./views/readiness.js')).readinessView, experiments: async () => (await import('./views/experiments.js')).experiments, frontend: async () => (await import('./views/experiments.js')).frontend, history: async () => (await import('./views/history.js')).historyView, about: async () => (await import('./views/about.js')).about };
-const drawer = () => import('./views/drawer.js');
+const ROUTES = { overview: async () => overview, readiness: async () => (await import('./views/readiness.js?v=1395207684')).readinessView, experiments: async () => (await import('./views/experiments.js?v=1395207684')).experiments, frontend: async () => (await import('./views/experiments.js?v=1395207684')).frontend, history: async () => (await import('./views/history.js?v=1395207684')).historyView, about: async () => (await import('./views/about.js?v=1395207684')).about };
+const drawer = () => import('./views/drawer.js?v=1395207684');
 const TITLES = { overview: 'Overview', readiness: 'Release readiness', experiments: 'Experiments', frontend: 'Frontend E2E', history: 'History', about: 'Data' };
 const main = document.getElementById('main');
 const switcher = document.getElementById('switcher');
@@ -171,7 +171,7 @@ themeBtn.addEventListener('click', () => setTheme(MODES[(MODES.indexOf(themeBtn.
 // ---- palette and shortcuts
 const palBtn = document.getElementById('palette-btn');
 const paletteCtx = () => { const { route, params, b } = parse(); return makeCtx(route, params, b); };
-const palette = (c) => import('./palette.js').then((m) => m.openPalette(c));
+const palette = (c) => import('./palette.js?v=1395207684').then((m) => m.openPalette(c));
 palBtn.addEventListener('click', () => { if (builds) palette(paletteCtx()); });
 document.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); if (builds) palette(paletteCtx()); return; }

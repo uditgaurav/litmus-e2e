@@ -1,8 +1,8 @@
-import { h, icon, badge, announce } from '../dom.js';
-import * as D from '../data.js';
-import { strip } from '../charts.js';
-import { tilt } from '../motion.js';
-import { pageHead, buildDot, buildGap, runMeta } from './common.js';
+import { h, icon, badge, announce } from '../dom.js?v=1395207684';
+import * as D from '../data.js?v=1395207684';
+import { strip } from '../charts.js?v=1395207684';
+import { tilt } from '../motion.js?v=1395207684';
+import { pageHead, buildDot, buildGap, runMeta } from './common.js?v=1395207684';
 
 const STATUS_CHIPS = [['all', 'All'], ['failed', 'Failing'], ['flaky', 'Flaky'], ['skipped', 'Skipped'], ['passed', 'Passing']];
 

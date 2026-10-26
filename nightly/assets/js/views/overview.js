@@ -1,8 +1,8 @@
-import { h, icon, badge, link } from '../dom.js';
-import * as D from '../data.js';
-import { ring, sparkline, trendChart, stackedBar, srTable } from '../charts.js';
-import { countUp, embers, tilt, magnetic } from '../motion.js';
-import { pageHead, buildDot, runMeta, buildGap, idLink, testTitle } from './common.js';
+import { h, icon, badge, link } from '../dom.js?v=1395207684';
+import * as D from '../data.js?v=1395207684';
+import { ring, sparkline, trendChart, stackedBar, srTable } from '../charts.js?v=1395207684';
+import { countUp, embers, tilt, magnetic } from '../motion.js?v=1395207684';
+import { pageHead, buildDot, runMeta, buildGap, idLink, testTitle } from './common.js?v=1395207684';
 
 const SUITE_NAMES = { bdd: 'Experiment BDD', frontend: 'ChaosCenter frontend E2E' };
 const VERDICT = {
