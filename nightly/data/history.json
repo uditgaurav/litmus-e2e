@@ -1,14 +1,11 @@
 {
  "builds": [
   {
-   "durationSec": 1828,
+   "durationSec": 1872,
    "id": "2026-10-26",
    "results": {
     "bdd/admin-mode/BDD of operator reconcile resiliency check Check for litmus components Should check for creation of runner pod": "p",
     "bdd/admin-mode/BDD of operator reconcile resiliency check Check for litmus components Should check for creation of runner pod#2": "p",
-    "bdd/annotation-check/BDD of annotation check test Check for chaos engine experiments status Should check for the verdict of engine": "f",
-    "bdd/annotation-check/BDD of annotation check test Check for litmus components Should check for creation of runner pod": "f",
-    "bdd/annotation-check/BDD of annotation check test cleanup for litmus components Should delete all the litmus CRs": "p",
     "bdd/appinfo/BDD of appinfo test Check for chaos engine verdict Should check for the verdict of engine@Chaos_Engine_Component_Test": "p",
     "bdd/appinfo/BDD of appinfo test Check for chaos engine verdict Should check for the verdict of engine@Chaos_Experiment_Component_Test": "p",
     "bdd/appinfo/BDD of appinfo test Check for litmus components Should check for creation of runner pod@Chaos_Engine_Component_Test": "p",
@@ -32,7 +29,7 @@
     "bdd/job-cleanup-policy/BDD of job cleanup policy test Check for litmus components Should check for creation of runner pod#2": "p",
     "bdd/job-cleanup-policy/BDD of job cleanup policy test Cleanup litmus components Should delete all the litmus CRs": "p",
     "bdd/job-cleanup-policy/BDD of job cleanup policy test Cleanup litmus components Should delete all the litmus CRs#2": "p",
-    "bdd/kubelet-service-kill/BDD of kubelet-service-kill experiment Check for kubelet service kill experiment Should check for creation of runner pod": "f",
+    "bdd/kubelet-service-kill/BDD of kubelet-service-kill experiment Check for kubelet service kill experiment Should check for creation of runner pod": "p",
     "bdd/kubelet-service-kill/BDD of kubelet-service-kill experiment Check for kubelet service kill experiment Should uncordon the app node": "p",
     "bdd/multiple-app-deploy/BDDs of pod level experiments to check the multiple deploy feature Check for container kill experiment with 50% affected in parallel Should check the container kill with pod affected percentage 50 and mode is parallel": "p",
     "bdd/multiple-app-deploy/BDDs of pod level experiments to check the multiple deploy feature Check for disk fill experiment with 50% affected in parallel Should check the disk fill experiment when pod affected percentage is 50 and mode is parallel": "p",
@@ -44,16 +41,16 @@
     "bdd/multiple-app-deploy/BDDs of pod level experiments to check the multiple deploy feature Should delete multiple application deployment": "p",
     "bdd/multiple-app-deploy/BDDs of pod level experiments to check the multiple deploy feature cleanup for litmus components Should delete all the litmus CRs": "p",
     "bdd/node-cpu-hog/BDD of node-cpu-hog experiment Check for node cpu hog experiment Should check for creation of runner pod": "p",
-    "bdd/node-drain/BDD of node-drain experiment Check for node drain experiment Should check for creation of runner pod": "f",
+    "bdd/node-drain/BDD of node-drain experiment Check for node drain experiment Should check for creation of runner pod": "p",
     "bdd/node-drain/BDD of node-drain experiment Check for node drain experiment Should uncordon the app node for node drain": "p",
     "bdd/node-io-stress/BDD of node-io-stress experiment Check for node io stress experiment Should check for creation of runner pod": "p",
     "bdd/node-memory-hog/BDD of node-memory-hog experiment Check for node memory hog experiment Should check for creation of runner pod": "p",
     "bdd/node-selector/BDD of Node selector Test for target node selection by node label Executes the node-cpu-hog experiment using a valid NODE_LABEL value": "p",
-    "bdd/node-selector/BDD of Node selector Test for target node selection by node label Should execute the node-cpu-hog experiment using an invalid NODE_LABEL value": "f",
+    "bdd/node-selector/BDD of Node selector Test for target node selection by node label Should execute the node-cpu-hog experiment using an invalid NODE_LABEL value": "p",
     "bdd/node-selector/BDD of Node selector Test for target node selection by node name Execute the node-cpu-hog experiment using a valid TARGET_NODES value": "f",
-    "bdd/node-selector/BDD of Node selector Test for target node selection by node name Execute the node-cpu-hog experiment using an invalid TARGET_NODES value": "f",
+    "bdd/node-selector/BDD of Node selector Test for target node selection by node name Execute the node-cpu-hog experiment using an invalid TARGET_NODES value": "p",
     "bdd/node-selector/BDD of Node selector Test for target node selection when neither NODE_LABEL nor TARGET_NODES is provided Executes the node-cpu-hog experiment without TARGET_NODES and NODE_LABEL": "p",
-    "bdd/node-taint/BDD of node-taint experiment Check for litmus components Should check for creation of runner pod": "f",
+    "bdd/node-taint/BDD of node-taint experiment Check for litmus components Should check for creation of runner pod": "p",
     "bdd/node-taint/BDD of node-taint experiment Check for litmus components Should uncordon the app node": "p",
     "bdd/pod-affected-perc-ton-parallel/BDDs to check pod level experiment with affected percentage 100 and sequence in parallel Check for container kill experiment with 100% affected and sequence parallel Should check the container kill with pod affected percentage 100 and mode is parallel": "p",
     "bdd/pod-affected-perc-ton-parallel/BDDs to check pod level experiment with affected percentage 100 and sequence in parallel Check for pod-delete experiment with 100% affected and sequence parallel Should check for the pod delete experiment": "p",
@@ -109,13 +106,13 @@
     "bdd/reconcile-resiliency/BDD of operator reconcile resiliency check Check for litmus components Should check for creation of runner pod": "p",
     "bdd/run-history/BDD of pod-delete experiment Run history check for failed run Should check for the run history in the chaos result when experiment fails": "f",
     "bdd/run-history/BDD of pod-delete experiment Run history check for passed run Should check for the run history in the chaos result when experiment is passed": "p",
-    "bdd/run-history/BDD of pod-delete experiment Run history check for stopped run Should check for the run history in the chaos result when experiment is aborted": "f",
+    "bdd/run-history/BDD of pod-delete experiment Run history check for stopped run Should check for the run history in the chaos result when experiment is aborted": "p",
     "bdd/service-account/BDD of serviceaccount test Check for chaos engine verdict Should check for the verdict of engine": "p",
     "bdd/service-account/BDD of serviceaccount test Check for litmus components Should check for creation of runner pod": "p",
     "bdd/service-account/BDD of serviceaccount test Cleanup litmus components Should delete all the litmus CRs": "p",
     "bdd/target-pod/BDD of pod-delete experiment Check for chaos engine verdict Should check for the verdict of experiment": "p",
     "bdd/target-pod/BDD of pod-delete experiment Check for litmus components Should check for creation of runner pod": "p",
-    "bdd/with-appinfo/BDDs to check the node level experiments with appinfo Check for kubelet service kill experiment with appinfo Should check for creation of runner pod": "f",
+    "bdd/with-appinfo/BDDs to check the node level experiments with appinfo Check for kubelet service kill experiment with appinfo Should check for creation of runner pod": "p",
     "bdd/with-appinfo/BDDs to check the node level experiments with appinfo Check to uncordon the target node Should uncordon the app node": "p",
     "bdd/with-appinfo/BDDs to check the node level experiments with appinfo cleanup for litmus components Should delete all the litmus CRs": "p",
     "frontend/REST APIs/UserManagment/Test Cases for User-Management Create New User": "p",
@@ -152,12 +149,12 @@
     "frontend/UI/Usermanagment/testing for User management Disable User": "p",
     "frontend/UI/Usermanagment/testing for User management Edit User": "p",
     "frontend/UI/chaoshub/testing chaoshub via UI Create new ChaosHub": "p",
-    "frontend/UI/chaoshub/testing chaoshub via UI Delete ChaosHub": "f",
+    "frontend/UI/chaoshub/testing chaoshub via UI Delete ChaosHub": "p",
     "frontend/UI/chaoshub/testing chaoshub via UI Edit ChaosHub [Change chaoshub name]": "p",
     "frontend/UI/chaoshub/testing chaoshub via UI negative test case for chaoshub [Get error when creating chaoshub with same name]": "p",
-    "frontend/UI/chaosinfra/testing chaosinfra via UI Creating chaosinfra": "f",
-    "frontend/UI/chaosinfra/testing chaosinfra via UI Disable chaosinfra": "f",
-    "frontend/UI/chaosinfra/testing chaosinfra via UI Editing chaosinfra": "f",
+    "frontend/UI/chaosinfra/testing chaosinfra via UI Creating chaosinfra": "p",
+    "frontend/UI/chaosinfra/testing chaosinfra via UI Disable chaosinfra": "p",
+    "frontend/UI/chaosinfra/testing chaosinfra via UI Editing chaosinfra": "p",
     "frontend/UI/chaosinfra/testing chaosinfra via UI negative test case for environment [Get error when creating environment with same name]": "p",
     "frontend/UI/chaosprobes/testing of CMD chaos probes create chaos probe": "p",
     "frontend/UI/chaosprobes/testing of CMD chaos probes delete chaos probe": "p",
@@ -178,17 +175,17 @@
     "frontend/UI/login/Testing login page of chaoscenter via UI Login with correct username and password": "p",
     "frontend/UI/login/Testing login page of chaoscenter via UI Negative test case[Login with incorrect username and password]": "p"
    },
-   "startedAt": "2026-10-26T17:12:18Z",
+   "startedAt": "2026-10-26T17:46:42Z",
    "status": "failed",
    "suites": {
     "bdd": {
      "counts": {
       "error": 0,
-      "failed": 12,
-      "passRate": 89.5,
-      "passed": 102,
+      "failed": 3,
+      "passRate": 97.3,
+      "passed": 108,
       "skipped": 0,
-      "total": 114
+      "total": 111
      },
      "optionalCounts": {
       "error": 0,
@@ -203,9 +200,9 @@
     "frontend": {
      "counts": {
       "error": 0,
-      "failed": 4,
-      "passRate": 93.2,
-      "passed": 55,
+      "failed": 0,
+      "passRate": 100.0,
+      "passed": 59,
       "skipped": 0,
       "total": 59
      },
@@ -217,7 +214,7 @@
       "skipped": 0,
       "total": 0
      },
-     "status": "failed"
+     "status": "passed"
     }
    },
    "workflows": {
@@ -250,27 +247,27 @@
     "chaoscenter": {
      "counts": {
       "error": 0,
-      "failed": 4,
-      "passed": 55,
+      "failed": 0,
+      "passed": 59,
       "skipped": 0
      },
-     "durationSec": 396,
-     "failureKind": "tests",
-     "runId": 40369760100,
-     "runUrl": "https://github.com/uditgaurav/litmus-e2e/actions/runs/40369760100",
-     "status": "failed"
+     "durationSec": 342,
+     "failureKind": null,
+     "runId": 40372308433,
+     "runUrl": "https://github.com/uditgaurav/litmus-e2e/actions/runs/40372308433",
+     "status": "passed"
     },
     "component": {
      "counts": {
       "error": 0,
-      "failed": 4,
+      "failed": 1,
       "passed": 28,
       "skipped": 0
      },
-     "durationSec": 694,
+     "durationSec": 700,
      "failureKind": "tests",
-     "runId": 40366405692,
-     "runUrl": "https://github.com/uditgaurav/litmus-e2e/actions/runs/40366405692",
+     "runId": 40372303671,
+     "runUrl": "https://github.com/uditgaurav/litmus-e2e/actions/runs/40372303671",
      "status": "failed"
     },
     "gcp": {
@@ -302,14 +299,14 @@
     "node-level": {
      "counts": {
       "error": 0,
-      "failed": 7,
-      "passed": 11,
+      "failed": 1,
+      "passed": 17,
       "skipped": 0
      },
-     "durationSec": 1823,
+     "durationSec": 1718,
      "failureKind": "tests",
-     "runId": 40366420404,
-     "runUrl": "https://github.com/uditgaurav/litmus-e2e/actions/runs/40366420404",
+     "runId": 40371792368,
+     "runUrl": "https://github.com/uditgaurav/litmus-e2e/actions/runs/40371792368",
      "status": "failed"
     },
     "pod-level": {
@@ -319,10 +316,10 @@
       "passed": 63,
       "skipped": 0
      },
-     "durationSec": 1708,
+     "durationSec": 1675,
      "failureKind": "tests",
-     "runId": 40366411403,
-     "runUrl": "https://github.com/uditgaurav/litmus-e2e/actions/runs/40366411403",
+     "runId": 40372298227,
+     "runUrl": "https://github.com/uditgaurav/litmus-e2e/actions/runs/40372298227",
      "status": "failed"
     },
     "vmware": {
@@ -341,7 +338,7 @@
    }
   }
  ],
- "generatedAt": "2026-10-26T17:46:48Z",
+ "generatedAt": "2026-10-26T18:22:18Z",
  "repository": "uditgaurav/litmus-e2e",
  "schemaVersion": 1
 }
