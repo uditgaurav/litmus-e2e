@@ -1,12 +1,12 @@
-import { icon, announce, hideTip } from './dom.js?v=883ff6a3ef';
-import * as D from './data.js?v=883ff6a3ef';
-import { reveal, swap, installSpotlight, magnetic } from './motion.js?v=883ff6a3ef';
-import { skeleton } from './views/common.js?v=883ff6a3ef';
-import { overview } from './views/overview.js?v=883ff6a3ef';
+import { icon, announce, hideTip } from './dom.js?v=73247ad7ab';
+import * as D from './data.js?v=73247ad7ab';
+import { reveal, swap, installSpotlight, magnetic } from './motion.js?v=73247ad7ab';
+import { skeleton } from './views/common.js?v=73247ad7ab';
+import { overview } from './views/overview.js?v=73247ad7ab';
 
 // the overview is loaded with the page, the other views and the overlays when they are first needed
-const ROUTES = { overview: async () => overview, readiness: async () => (await import('./views/readiness.js?v=883ff6a3ef')).readinessView, experiments: async () => (await import('./views/experiments.js?v=883ff6a3ef')).experiments, frontend: async () => (await import('./views/experiments.js?v=883ff6a3ef')).frontend, history: async () => (await import('./views/history.js?v=883ff6a3ef')).historyView, about: async () => (await import('./views/about.js?v=883ff6a3ef')).about };
-const drawer = () => import('./views/drawer.js?v=883ff6a3ef');
+const ROUTES = { overview: async () => overview, readiness: async () => (await import('./views/readiness.js?v=73247ad7ab')).readinessView, experiments: async () => (await import('./views/experiments.js?v=73247ad7ab')).experiments, frontend: async () => (await import('./views/experiments.js?v=73247ad7ab')).frontend, history: async () => (await import('./views/history.js?v=73247ad7ab')).historyView, about: async () => (await import('./views/about.js?v=73247ad7ab')).about };
+const drawer = () => import('./views/drawer.js?v=73247ad7ab');
 const TITLES = { overview: 'Overview', readiness: 'Release readiness', experiments: 'Experiments', frontend: 'Frontend E2E', history: 'History', about: 'Data' };
 const main = document.getElementById('main');
 const switcher = document.getElementById('switcher');
@@ -171,7 +171,7 @@ themeBtn.addEventListener('click', () => setTheme(MODES[(MODES.indexOf(themeBtn.
 // ---- palette and shortcuts
 const palBtn = document.getElementById('palette-btn');
 const paletteCtx = () => { const { route, params, b } = parse(); return makeCtx(route, params, b); };
-const palette = (c) => import('./palette.js?v=883ff6a3ef').then((m) => m.openPalette(c));
+const palette = (c) => import('./palette.js?v=73247ad7ab').then((m) => m.openPalette(c));
 palBtn.addEventListener('click', () => { if (builds) palette(paletteCtx()); });
 document.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); if (builds) palette(paletteCtx()); return; }

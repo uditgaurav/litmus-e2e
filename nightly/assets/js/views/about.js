@@ -1,6 +1,6 @@
-import { h, icon, badge, link } from '../dom.js?v=883ff6a3ef';
-import * as D from '../data.js?v=883ff6a3ef';
-import { pageHead, buildDot } from './common.js?v=883ff6a3ef';
+import { h, icon, badge, link } from '../dom.js?v=73247ad7ab';
+import * as D from '../data.js?v=73247ad7ab';
+import { pageHead, buildDot } from './common.js?v=73247ad7ab';
 
 export function about(ctx) {
   const root = h('div', { class: 'stack' }, pageHead('Data', 'Where the numbers come from', 'Nothing on this site is estimated. Every figure is read from the files below, which the report workflow writes from the GitHub Actions runs and their JUnit artifacts.'));
