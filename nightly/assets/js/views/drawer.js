@@ -1,7 +1,7 @@
-import { h, icon, badge, link, statusLabel } from '../dom.js?v=73247ad7ab';
-import * as D from '../data.js?v=73247ad7ab';
-import { strip } from '../charts.js?v=73247ad7ab';
-import { buildDot } from './common.js?v=73247ad7ab';
+import { h, icon, badge, link, statusLabel } from '../dom.js?v=875515bff9';
+import * as D from '../data.js?v=875515bff9';
+import { strip } from '../charts.js?v=875515bff9';
+import { buildDot } from './common.js?v=875515bff9';
 
 let open = null; // { el, back, opener }
 

@@ -1,9 +1,9 @@
-import { h, icon, badge, link } from '../dom.js?v=73247ad7ab';
-import * as D from '../data.js?v=73247ad7ab';
-import { ring, sparkline, trendChart, stackedBar, srTable } from '../charts.js?v=73247ad7ab';
-import { countUp, embers, tilt, magnetic } from '../motion.js?v=73247ad7ab';
-import { pageHead, buildDot, runMeta, buildGap, idLink, testTitle } from './common.js?v=73247ad7ab';
-import { liveView } from './live.js?v=73247ad7ab';
+import { h, icon, badge, link } from '../dom.js?v=875515bff9';
+import * as D from '../data.js?v=875515bff9';
+import { ring, sparkline, trendChart, stackedBar, srTable } from '../charts.js?v=875515bff9';
+import { countUp, embers, tilt, magnetic } from '../motion.js?v=875515bff9';
+import { pageHead, buildDot, runMeta, buildGap, idLink, testTitle } from './common.js?v=875515bff9';
+import { liveView } from './live.js?v=875515bff9';
 
 const SUITE_NAMES = { bdd: 'Experiment BDD', frontend: 'ChaosCenter frontend E2E' };
 const VERDICT = {
