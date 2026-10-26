@@ -1,6 +1,6 @@
 {
  "build": {
-  "ageHours": 0.5,
+  "ageHours": 0.6,
   "durationSec": 1828,
   "finishedAt": "2026-10-26T17:42:46Z",
   "id": "2026-10-26",
@@ -1042,7 +1042,7 @@
   ],
   "scheduledNotExecuted": []
  },
- "generatedAt": "2026-10-26T17:44:30Z",
+ "generatedAt": "2026-10-26T17:46:48Z",
  "metrics": {
   "buildsConsidered": 1,
   "durationChange": null,
