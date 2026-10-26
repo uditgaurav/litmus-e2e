@@ -139,7 +139,8 @@ var _ = Describe("BDD of pod-delete experiment", func() {
 
 			//Checking chaosengine verdict
 			By("Checking the Verdict of Chaos Engine")
-			chaosEngineVerdict, err := pkg.GetChaosEngineVerdict(&testsDetails, clients)
+			// the engine carries a probe, the typed client of the pinned library cannot decode it
+			chaosEngineVerdict, err := pkg.GetChaosEngineVerdictUnstructured(&testsDetails, clients)
 			Expect(err).To(BeNil(), "Failed to get the ChaosEngine Verdict due to {%v}", err)
 			Expect(chaosEngineVerdict).To(Equal("Fail"), "ChaosEngine Verdict is not Fail due to {%v}", err)
 

@@ -12,6 +12,8 @@ import (
 	"github.com/pkg/errors"
 	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
+	"k8s.io/apimachinery/pkg/runtime/schema"
 )
 
 // GetApplicationNode will give the node name of the application pod
@@ -192,4 +194,37 @@ func isSchedulable(node *v1.Node) bool {
 		}
 	}
 	return true
+}
+
+// GetChaosEngineVerdictUnstructured reads the verdict of the chaosengine without decoding it into the typed
+// ChaosEngine. The typed API of the pinned operator library cannot decode the run properties of the probes of current
+// LitmusChaos (durations are strings), an engine with a probe has to be read as unstructured.
+func GetChaosEngineVerdictUnstructured(testsDetails *types.TestDetails, clients environment.ClientSets) (string, error) {
+
+	gvr := schema.GroupVersionResource{Group: "litmuschaos.io", Version: "v1alpha1", Resource: "chaosengines"}
+	verdict := ""
+	log.Info("[Wait]: Wating for ChaosEngine Verdict updation")
+	if err := retry.
+		Times(30).
+		Wait(1 * time.Second).
+		Try(func(attempt uint) error {
+			engine, err := clients.DynamicClient.Resource(gvr).Namespace(testsDetails.ChaosNamespace).Get(testsDetails.EngineName, metav1.GetOptions{})
+			if err != nil {
+				return errors.Errorf("Failed to get the chaosengine due to %v", err)
+			}
+			exps, found, err := unstructured.NestedSlice(engine.Object, "status", "experiments")
+			if err != nil || !found || len(exps) == 0 {
+				return errors.Errorf("ChaosEngine %v has no experiment status yet", testsDetails.EngineName)
+			}
+			first, _ := exps[0].(map[string]interface{})
+			verdict, _ = first["verdict"].(string)
+			if verdict == "" || verdict == "Awaited" {
+				return errors.Errorf("Verdict of Chaos Engine is %q", verdict)
+			}
+			log.Infof("Chaos Engine Verdict is %v", verdict)
+			return nil
+		}); err != nil {
+		return "", err
+	}
+	return verdict, nil
 }
