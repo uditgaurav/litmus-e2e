@@ -87,11 +87,17 @@ jobs:
           owner="${GITHUB_REPOSITORY%%/*}"
           name="${GITHUB_REPOSITORY#*/}"
           site="https://${owner}.github.io/${name}/nightly/data"
+          previous="${site}/history.json"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # validation only: the history starts with the real scheduled runs of the default branch
+            python scripts/report/build_report.py --out /tmp/backfill --branch master --previous "$previous"
+            previous=/tmp/backfill/history.json
+          fi
           # the history published earlier, a missing file starts a new history
           python scripts/report/build_report.py \
             --out dashboard/data \
             --branch "${{ inputs.branch || (github.event_name == 'push' && 'validate-e2e') || '' }}" \
-            --previous "${site}/history.json"
+            --previous "$previous"
           # the release candidate and the GA build are reported the same way from the runs of their branch or tag,
           # a stream without a branch is not published and the dashboard shows it as "no run yet"
           if [ -n "$RC_BRANCH" ]; then
