@@ -1,7 +1,7 @@
-import { h, icon, showTip, hideTip, announce } from '../dom.js?v=875515bff9';
-import * as D from '../data.js?v=875515bff9';
-import { strip, letterText, letterTone } from '../charts.js?v=875515bff9';
-import { pageHead, buildDot, buildGap } from './common.js?v=875515bff9';
+import { h, icon, showTip, hideTip, announce } from '../dom.js?v=b15ab3fe72';
+import * as D from '../data.js?v=b15ab3fe72';
+import { strip, letterText, letterTone } from '../charts.js?v=b15ab3fe72';
+import { pageHead, buildDot, buildGap } from './common.js?v=b15ab3fe72';
 
 const WINDOWS = [['7', 'Last 7'], ['14', 'Last 14'], ['30', 'Last 30'], ['all', 'All']];
 

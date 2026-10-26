@@ -1709,7 +1709,7 @@
    }
   },
   {
-   "durationSec": 2933,
+   "durationSec": 3377,
    "id": "2026-10-26",
    "results": {
     "bdd/admin-mode/BDD of operator reconcile resiliency check Check for litmus components Should check for creation of runner pod": "p",
@@ -1884,7 +1884,7 @@
     "frontend/UI/login/Testing login page of chaoscenter via UI Login with correct username and password": "p",
     "frontend/UI/login/Testing login page of chaoscenter via UI Negative test case[Login with incorrect username and password]": "p"
    },
-   "startedAt": "2026-10-26T18:22:15Z",
+   "startedAt": "2026-10-26T18:22:18Z",
    "status": "failed",
    "suites": {
     "bdd": {
@@ -2025,11 +2025,11 @@
       "passed": 64,
       "skipped": 0
      },
-     "durationSec": 1795,
+     "durationSec": 1773,
      "failureKind": null,
-     "runId": 40377124046,
-     "runUrl": "https://github.com/uditgaurav/litmus-e2e/actions/runs/40377124046",
-     "status": "cancelled"
+     "runId": 40381102059,
+     "runUrl": "https://github.com/uditgaurav/litmus-e2e/actions/runs/40381102059",
+     "status": "passed"
     },
     "vmware": {
      "counts": {
@@ -2047,7 +2047,7 @@
    }
   }
  ],
- "generatedAt": "2026-10-26T19:17:45Z",
+ "generatedAt": "2026-10-26T19:19:18Z",
  "repository": "uditgaurav/litmus-e2e",
  "schemaVersion": 1
 }

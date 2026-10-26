@@ -1,7 +1,7 @@
 // Inline SVG charts. Draw-in animations use stroke-dashoffset on pathLength-normalised paths (see .draw in the
 // stylesheet), colours come from custom properties so every chart follows the build accent and the theme.
-import { h, svg, withTip } from './dom.js?v=875515bff9';
-import { fmtRate } from './data.js?v=875515bff9';
+import { h, svg, withTip } from './dom.js?v=b15ab3fe72';
+import { fmtRate } from './data.js?v=b15ab3fe72';
 
 const STATUS_CLASS = { passed: 'ok', failed: 'bad', error: 'bad', skipped: 'warn', incomplete: 'warn', in_progress: 'warn', cancelled: 'warn', not_run: 'warn' };
 export function tone(status) { return STATUS_CLASS[status] || 'warn'; }
