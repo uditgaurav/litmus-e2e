@@ -3,6 +3,9 @@ name: Nightly-Report
 # Builds the data of the nightly dashboard from the runs of the nightly workflows and publishes it to the nightly/ folder
 # of the gh-pages branch, so it is served at https://<owner>.github.io/<repo>/nightly/ by the Pages setup of the repository.
 on:
+  # validation branch only: a new workflow can not be started by hand before it is on the default branch
+  push:
+    branches: [validate-e2e]
   workflow_run:
     workflows:
       - Nightly-Pod-Level-Pipeline
@@ -65,7 +68,7 @@ jobs:
           # the history published earlier, a missing file starts a new history
           python scripts/report/build_report.py \
             --out dashboard/data \
-            --branch "${{ inputs.branch }}" \
+            --branch "${{ inputs.branch || (github.event_name == 'push' && 'validate-e2e') || '' }}" \
             --previous "https://${owner}.github.io/${name}/nightly/data/history.json"
 
       - name: Upload the site
@@ -78,7 +81,7 @@ jobs:
   publish:
     needs: build
     # only the default branch publishes, a run of another branch has to ask for it
-    if: ${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) || inputs.publish }}
+    if: ${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) || inputs.publish || github.event_name == 'push' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
